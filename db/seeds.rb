@@ -1,6 +1,11 @@
 User.all.destroy_all
 Cookbook.all.destroy_all
 Followed.all.destroy_all
+Recipe.all.destroy_all
+Ingredient.all.destroy_all
+Photo.all.destroy_all
+Comment.all.destroy_all
+RecipeIngredient.all.destroy_all
 
 
 anson = User.create(first_name: "Anson", last_name: "Nickel", username: "anickel")
@@ -29,11 +34,11 @@ ingredient3 = Ingredient.create(name: "Lettuce")
 ingredient4 = Ingredient.create(name: "Onion")
 
 
-recipe1 = Recipe.create(title: "BLT", cookbook: cookbook1)
+recipe1 = Recipe.create(title: "BLT", cookbook: cookbook1, instructions: "Instructions go here!")
 
-ri1 = RecipeIngredient.create(recipe: recipe1, ingredient: ingredient1)
-ri2 = RecipeIngredient.create(recipe: recipe1, ingredient: ingredient2)
+ri1 = RecipeIngredient.create(recipe: recipe1, ingredient: ingredient1, quantity: "1/4 Cup")
+ri2 = RecipeIngredient.create(recipe: recipe1, ingredient: ingredient2, quantity: "1 teaspoon")
 
 photo1 = Photo.create(recipe: recipe1, img_url: "https://lh3.googleusercontent.com/proxy/ziFLd7ma9tvJsXe0cQ8FGBVh5KZ82lbhOe0bZgIx1Y_wGOeDWdWYNE2-QM6XHNNgKk31puvOwqTTcSXdwfNxOOoX1uYp5huIeBBl7SF9RduDqzMtbg")
 
-comment1 = Comment.create(content: "Great dish!", user: user1, recipe: recipe1) 
+comment1 = Comment.create(content: "Great dish!", user: rachael, recipe: recipe1) 

@@ -3,4 +3,10 @@ class User < ApplicationRecord
     has_many :followeds
     has_many :followed_cookbooks, :class_name => "Cookbook", through: :followeds, source: :cookbook
     has_many :comments
+
+    def full_name
+       fullname = "#{self.first_name} #{self.last_name}"
+       fullname.downcase.titlecase
+    end
+
 end
