@@ -1,8 +1,9 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :first_name, :last_name, :username, :owned_cookbooks, :followed_cookbooks
+  attributes :id, :name, :owned_cookbooks, :followed_cookbooks
 
-  has_many :owned_cookbooks
-  has_many :followed_cookbooks
+  def name
+    object.full_name
+  end
 
   def recipes(cb)
       cb.recipes.map do |r|
@@ -22,7 +23,7 @@ class UserSerializer < ActiveModel::Serializer
           comments.push({content: c.content, commenter: c.user.full_name, created_at: c.created_at.strftime("%A, %d %b %Y %l:%M %p")})
         end
         
-        {id: r.id, title: r.title, instructions: r.instructions, photos: photos, comments: comments, cookbook_id: r.cookbook_id, ingredients: ingredients}
+        {id: r.id, cookbook_id: r.cookbook_id, title: r.title, instructions: r.instructions, photos: photos, comments: comments,  ingredients: ingredients}
       end
   end
 
