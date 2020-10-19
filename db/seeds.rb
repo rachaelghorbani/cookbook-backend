@@ -57,10 +57,10 @@ user3 = User.create(first_name: "Sarah", last_name: "Connor", username: "sconnor
 user4 = User.create(first_name: "Jason", last_name: "Baker", username: "jbaker")
 
 # Cookbooks
-cookbook1 = Cookbook.create(title: "Cooking101", owner: anson)
-cookbook2 = Cookbook.create(title: "Faves", owner: anson)
-cookbook3 = Cookbook.create(title: "Cooked", owner:rachael)
-cookbook4 = Cookbook.create(title: "Family Recipes", owner: rachael)
+cookbook1 = Cookbook.create(title: "Cooking101", owner: anson, description: "My Cookbook is the best cookbook ever.")
+cookbook2 = Cookbook.create(title: "Faves", owner: anson, description: "My Cookbook is the best cookbook ever.")
+cookbook3 = Cookbook.create(title: "Cooked", owner:rachael, description: "My Cookbook is the best cookbook ever.")
+cookbook4 = Cookbook.create(title: "Family Recipes", owner: rachael, description: "My Cookbook is the best cookbook ever.")
 
 # Recipes
 recipe1 = Recipe.create(title: "BLT", cookbook: cookbook1, instructions: "Instructions go here!")
