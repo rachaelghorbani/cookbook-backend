@@ -29,13 +29,13 @@ class UserSerializer < ActiveModel::Serializer
 
   def owned_cookbooks
     object.owned_cookbooks.map do |oc|
-        {id: oc.id, title: oc.title, recipes: recipes(oc)}
+        {id: oc.id, owner_id: oc.owner.id, title: oc.title, recipes: recipes(oc)}
     end
   end
 
   def followed_cookbooks
     object.followed_cookbooks.map do |fc|
-        {id: fc.id, title: fc.title, recipes: recipes(fc)}
+        {id: fc.id, owner_id: fc.user_id, title: fc.title, recipes: recipes(fc)}
     end
   end
 
