@@ -11,12 +11,15 @@ class UsersController < ApplicationController
     end
 
     def create
-        user = User.new(user_params)
-        if user.save
+        # user = User.find_or_create_by(user_params)
+        user = User.find_by(username: params[:user][:username])
+        if user
             render json: user
-        else
-            render json: {error: user.errors.full_messages}, status: :not_acceptable
- 
+        elsif !user
+            user = User.create(user_params)
+            render json: user
+        # else
+        #     render json: {error: user.errors.full_messages}, status: :not_acceptable
         end
     end
 

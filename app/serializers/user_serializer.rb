@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :owned_cookbooks, :followed_cookbooks
+  attributes :id, :name, :username, :owned_cookbooks, :followed_cookbooks
 
   def name
     object.full_name
