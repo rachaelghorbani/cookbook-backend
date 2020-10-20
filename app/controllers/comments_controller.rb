@@ -1,5 +1,7 @@
 
 class CommentsController < ApplicationController
+    skip_before_action :authorized, only: [:create, :index]
+
 
     def index 
         comments = Comment.all 

@@ -1,7 +1,19 @@
 class PhotosController < ApplicationController
+    skip_before_action :authorized, only: [:index, :create]
+
+    def index
+        photos = Photo.all 
+        render json: photos
+    end
+
 
     def create
-        photo = Photo.new(photo_params)
+        
+        image = Cloudinary::Uploader.upload(params[:image])
+        
+        photo = Photo.create(img_url: image["url"], recipe_id: params["recipe_id"].to_i)
+        byebug
+
         if photo.save 
             render json: photo
         else
@@ -18,7 +30,7 @@ class PhotosController < ApplicationController
     private
 
     def photo_params
-        params.require(:photo).permit(:recipe_id, :mg_url)
+        params.require(:photo).permit(:recipe_id, :img_url, :image)
     end
-end
+
 end

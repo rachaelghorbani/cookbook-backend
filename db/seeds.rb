@@ -63,30 +63,13 @@ cookbook2 = Cookbook.create(title: "Anson Cookboook 2", owner: anson, descriptio
 cookbook3 = Cookbook.create(title: "Rachael Cookbook 1", owner:rachael, description: "My Cookbook is the best cookbook ever.")
 cookbook4 = Cookbook.create(title: "Rachael Cookbook 2", owner: rachael, description: "My Cookbook is the second best cookbook ever.")
 
-# Recipes
-
-
 # Followeds
 Followed.create(user: anson, cookbook: cookbook4)
 Followed.create(user: rachael, cookbook: cookbook1)
 
-
-# Ingredients
-# ingredient1 = Ingredient.create(name: "Tomato")
-# ingredient2 = Ingredient.create(name: "Cucumber")
-# ingredient3 = Ingredient.create(name: "Lettuce")
-# ingredient4 = Ingredient.create(name: "Onion")
-
-# RecipeIngredients
-# ri1 = RecipeIngredient.create(recipe: recipe1, ingredient: ingredient1, quantity: "1/4 Cup")
-# ri2 = RecipeIngredient.create(recipe: recipe1, ingredient: ingredient2, quantity: "1 teaspoon")
-
-# Photos
-# photo1 = Photo.create(recipe: recipe1, img_url: "https://lh3.googleusercontent.com/proxy/ziFLd7ma9tvJsXe0cQ8FGBVh5KZ82lbhOe0bZgIx1Y_wGOeDWdWYNE2-QM6XHNNgKk31puvOwqTTcSXdwfNxOOoX1uYp5huIeBBl7SF9RduDqzMtbg")
-
 # Comments
-20.times do
-    Comment.create(content: Faker::Movies::PrincessBride.quote, user: User.all.sample, recipe: Recipe.all.sample) 
+50.times do
+    Comment.create(content: Faker::Movie.quote, user_id: User.all.sample.id, recipe_id: Recipe.all.sample.id)
 end
 
 

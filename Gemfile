@@ -21,6 +21,9 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'active_model_serializers'
 
+# Uploading files
+gem 'cloudinary'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
@@ -30,7 +33,8 @@ gem 'dotenv-rails'
 
 gem "jwt"
 
-gem "faker"
+# gem "faker"
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
 
 group :development, :test do
