@@ -1,5 +1,5 @@
 class CookbookSerializer < ActiveModel::Serializer
-  attributes :id, :title, :owner, :followers, :recipes 
+  attributes :id, :title, :owner, :description, :followers, :recipes 
 
   def owner 
       {owner_name: object.owner.full_name, owner_id: object.owner.id}

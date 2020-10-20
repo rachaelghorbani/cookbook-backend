@@ -1,4 +1,5 @@
 class CookbooksController < ApplicationController
+    skip_before_action :authorized, only: [:index, :create]
 
     def index
         cookbooks = Cookbook.all 
@@ -37,7 +38,7 @@ class CookbooksController < ApplicationController
     private
 
     def cookbook_params 
-        params.require(:cookbook).permit(:title, :user_id)
+        params.require(:cookbook).permit(:title, :user_id, :description)
     end
 
 end

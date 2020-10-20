@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    skip_before_action :authorized, only: [:create, :index]
 
     def index
         users = User.all
@@ -11,15 +12,12 @@ class UsersController < ApplicationController
     end
 
     def create
-        # user = User.find_or_create_by(user_params)
-        user = User.find_by(username: params[:user][:username])
-        if user
-            render json: user
-        elsif !user
-            user = User.create(user_params)
-            render json: user
-        # else
-        #     render json: {error: user.errors.full_messages}, status: :not_acceptable
+        user = User.create(user_params)
+        if user.valid?
+            token = encode_token(user_id: user.id)
+            render json: { user: user, jwt: token }, status: :created
+        else
+            render json: { error: 'failed to create user' }, status: :not_acceptable
         end
     end
 
@@ -43,7 +41,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:first_name, :last_name, :username)
+        params.require(:user).permit(:first_name, :last_name, :username, :password)
 
     end
 
