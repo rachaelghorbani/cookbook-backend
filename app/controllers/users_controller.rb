@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    skip_before_action :authorized, only: [:create, :index]
+    skip_before_action :authorized, only: [:create, :index, :current]
 
     def index
         users = User.all
@@ -9,6 +9,10 @@ class UsersController < ApplicationController
     def show
         user = User.find(params[:id])
         render json: user
+    end
+
+    def current
+        render json: {user: current_user}, status: :accepted
     end
 
     def create
