@@ -11,7 +11,9 @@ class RecipesController < ApplicationController
     end
 
     def create
-        recipe = Recipe.new(comment_params)
+        recipe = Recipe.new(recipe_params)
+        byebug
+        # iterate through ingredients attributes, make RecipeIngredients, make Ingredients
         if recipe.save
             render json: recipe
         else 
@@ -37,7 +39,7 @@ class RecipesController < ApplicationController
     private
 
     def recipe_params
-        params.require(:recipe).permit(:title, :instructions, :cookbook_id)
+        params.require(:recipe).permit(:title, :instructions, :cookbook_id, ingredients_attributes: [:quantity, :name])
     end
 
 end

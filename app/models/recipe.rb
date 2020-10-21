@@ -4,4 +4,6 @@ class Recipe < ApplicationRecord
     has_many :ingredients, through: :recipe_ingredients
     has_many :photos, dependent: :destroy
     has_many :comments, dependent: :destroy
+
+    accepts_nested_attributes_for :ingredients
 end
