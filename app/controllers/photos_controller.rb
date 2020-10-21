@@ -11,8 +11,8 @@ class PhotosController < ApplicationController
         
         image = Cloudinary::Uploader.upload(params[:image])
         
-        photo = Photo.create(img_url: image["url"], recipe_id: params["recipe_id"].to_i)
-        byebug
+        photo = Photo.create(img_url: image["url"], recipe_id: params["recipe_id"].to_i, description: params["description"])
+        
 
         if photo.save 
             render json: photo

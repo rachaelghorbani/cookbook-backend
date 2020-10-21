@@ -1,3 +1,3 @@
 class PhotoSerializer < ActiveModel::Serializer
-  attributes :id, :img_url, :recipe_id
+  attributes :id, :img_url, :recipe_id, :description
 end
