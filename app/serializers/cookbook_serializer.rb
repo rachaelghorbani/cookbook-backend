@@ -7,7 +7,7 @@ class CookbookSerializer < ActiveModel::Serializer
 
   def followers
     object.followeds.map do |f|
-        {follower_name: f.user.full_name, follower_id: f.user_id }
+        {followed_id: f.id, follower_name: f.user.full_name, follower_id: f.user_id }
     end
   end
 

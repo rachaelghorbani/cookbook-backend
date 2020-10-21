@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :ingredients
   resources :recipe_ingredients
   resources :recipes
-  resources :followed_cookbooks
+  resources :followeds
   resources :cookbooks
   resources :users
 

@@ -1,3 +1,3 @@
 class FollowedSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :user_id, :cookbook_id
 end

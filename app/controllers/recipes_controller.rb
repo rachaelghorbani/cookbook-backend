@@ -11,9 +11,17 @@ class RecipesController < ApplicationController
     end
 
     def create
-        recipe = Recipe.new(recipe_params)
-        byebug
-        # iterate through ingredients attributes, make RecipeIngredients, make Ingredients
+        # 1. create new Recipe (title, cookbook_id, instructions)
+        # 2. map through ingredients_attributes and make Ingredient (name), then RecipeIngredients (quantity, recipe_id, ingredient_id)
+        # 3. save Recipe, send back json
+
+        recipe = Recipe.create(title: params[:recipe][:title], cookbook_id: params[:recipe][:cookbook_id], instructions: params[:recipe][:instructions])
+
+        ingredients = params[:ingredients_attributes]
+        ingredients.map do |i|
+            ing = Ingredient.create(name: i["name"])
+            RecipeIngredient.create(quantity: i["quantity"], recipe_id: recipe.id, ingredient_id: ing.id)
+        end
         if recipe.save
             render json: recipe
         else 
