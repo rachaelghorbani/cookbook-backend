@@ -44,7 +44,7 @@ end
 
 # Calling this at the bottom of code
 def externalRecipeSeed
-    15.times do
+    20.times do
         api_recipe = get_random_recipe()
         createRecipeFromAPI(api_recipe)
     end
@@ -53,24 +53,32 @@ end
 # Users
 anson = User.create(first_name: "Anson", last_name: "Nickel", username: "anickel", password: "1234")
 rachael = User.create(first_name: "Rachael", last_name: "Ghorbani", username: "rghorbani", password: "1234")
+judy = User.create(first_name: "Judy", last_name: "Jetson", username: "jjetson", password: "1234")
+val = User.create(first_name: "Val", last_name: "Vasquez", username: "vvasquez", password: "1234")
+juan = User.create(first_name: "Juan", last_name: "Mire", username: "jmire", password: "1234")
 
 
 
 
 # Cookbooks
-cookbook1 = Cookbook.create(title: "Anson Cookbook 1", owner: anson, description: "My Cookbook is the best cookbook ever.")
-cookbook2 = Cookbook.create(title: "Anson Cookboook 2", owner: anson, description: "My Cookbook is the second best cookbook ever.")
-cookbook3 = Cookbook.create(title: "Rachael Cookbook 1", owner:rachael, description: "My Cookbook is the best cookbook ever.")
-cookbook4 = Cookbook.create(title: "Rachael Cookbook 2", owner: rachael, description: "My Cookbook is the second best cookbook ever.")
+cookbook1 = Cookbook.create(title: "Anson's Cookbook", owner: anson, description: "My family's favorite recipes!")
+cookbook2 = Cookbook.create(title: Faker::Restaurant.name, owner: anson, description: "My favorite recipes.")
+cookbook3 = Cookbook.create(title: Faker::Restaurant.name, owner:rachael, description: Faker::Restaurant.description)
+cookbook4 = Cookbook.create(title: Faker::Restaurant.name, owner: User.all.sample, description: Faker::Restaurant.description)
+cookbook5 = Cookbook.create(title: Faker::Restaurant.name, owner: User.all.sample, description: Faker::Restaurant.description)
+cookbook6 = Cookbook.create(title: Faker::Restaurant.name, owner: User.all.sample, description: Faker::Restaurant.description)
+cookbook7 = Cookbook.create(title: Faker::Restaurant.name, owner:User.all.sample, description: Faker::Restaurant.description)
+cookbook8 = Cookbook.create(title: "Rachael's Cookbook", owner: rachael, description: Faker::Restaurant.description)
 
 # Followeds
 Followed.create(user: anson, cookbook: cookbook4)
 Followed.create(user: rachael, cookbook: cookbook1)
 
 # Comments
-50.times do
-    Comment.create(content: Faker::Movie.quote, user_id: User.all.sample.id, recipe_id: Recipe.all.sample.id)
-end
+
 
 
 externalRecipeSeed()
+50.times do
+    Comment.create(content: Faker::Movie.quote, user_id: User.all.sample.id, recipe_id: Recipe.all.sample.id)
+end
