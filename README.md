@@ -1,24 +1,41 @@
-# README
+# Cookbooks
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to Cookbooks: A way to share family history through recipes!
 
-Things you may want to cover:
+This app was built in collaboration with [Anson Nickel](https://github.com/anickel101) as a way to upload, share, and discover family cookbooks and recipies. The idea came from the thought that most family recipes and cookbooks, especially those which have been around for generations, are often hand written and hard to keep track of. We sought to create a better way to both share one's own cookbooks and recipes, and discover new ones!
 
-* Ruby version
+## Video Demo
 
-* System dependencies
+## Application Features
 
-* Configuration
+A user can: 
 
-* Database creation
+* log in/create a new account/log out
+* see a list of cookbooks they both own and follow as well as a list of all cookbooks
+* see a list of all recipes
+* follow/unfollow cookbooks
+* create a new cookbook
+* add a new recipe to one of their own cookbooks
+* upload photos of recipies they've tried to a recipe's page
+* edit and delete their own cookbooks and recipes
+* search for recipies in a cookbook either by title or ingredient name
+* leave comments on recipes
 
-* Database initialization
+## Dev Tools
 
-* How to run the test suite
+[**Front End**](https://github.com/rachaelghorbani/cookbook-frontend)
+* React.js
+* React Router
+* Boostrap
+* Custom CSS
 
-* Services (job queues, cache servers, search engines, etc.)
+**Back End**
+* Ruby on Rails
+* PostgreSQL
+* BCrypt
+* JWT
+* Spoonacular API
+* Cloudinary
+* Active Model Seriazliers
 
-* Deployment instructions
 
-* ...
